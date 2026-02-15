@@ -150,3 +150,7 @@ Encountered a bug, have a feature request, or need clarification? Please [open a
 For general questions or discussions, you can reach out to [Maintainers on X (formerly Twitter)](https://x.com/codedoesdev).
 
 Contributions are welcome! Please feel free to fork the repository, make your changes, and submit a pull request.
+
+---
+
+deploy
