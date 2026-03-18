@@ -1,16 +1,69 @@
-"use client";
+'use client';
 
-import { useRef } from "react";
+import { useRef } from 'react';
 
-import Demo from "~/components/demo";
-import Faq from "~/components/faq";
-import Footer from "~/components/footer";
-import Hero from "~/components/hero";
-import { Confetti, type ConfettiRef } from "~/components/magicui/confetti";
-import Powered from "~/components/powered";
+import Faq from '~/components/faq';
+import Footer from '~/components/footer';
+import { AvatarList } from '~/components/shadcn-space/blocks/hero-01/hero';
+import { Confetti, type ConfettiRef } from '~/components/magicui/confetti';
+import BrandSlider, {
+  BrandList,
+} from '~/components/shadcn-space/blocks/hero-01/brand-slider';
+import Header, {
+  NavigationSection,
+} from '~/components/shadcn-space/blocks/hero-01/header';
+import HeroSection from '~/components/shadcn-space/blocks/hero-01/hero';
 
 export function LandingPage({ waitlistPeople }: { waitlistPeople: number }) {
   const confettiRef = useRef<ConfettiRef>(null);
+
+  const avatarList: AvatarList[] = [
+    {
+      image: 'https://images.shadcnspace.com/assets/profiles/user-1.jpg',
+    },
+    {
+      image: 'https://images.shadcnspace.com/assets/profiles/user-2.jpg',
+    },
+    {
+      image: 'https://images.shadcnspace.com/assets/profiles/user-3.jpg',
+    },
+    {
+      image: 'https://images.shadcnspace.com/assets/profiles/user-5.jpg',
+    },
+  ];
+
+  const brandList: BrandList[] = [
+    {
+      image: 'https://images.shadcnspace.com/assets/brand-logo/logoipsum-1.svg',
+      lightimg:
+        'https://images.shadcnspace.com/assets/brand-logo/logoipsum-light-1.svg',
+      name: 'Brand 1',
+    },
+    {
+      image: 'https://images.shadcnspace.com/assets/brand-logo/logoipsum-2.svg',
+      lightimg:
+        'https://images.shadcnspace.com/assets/brand-logo/logoipsum-light-2.svg',
+      name: 'Brand 2',
+    },
+    {
+      image: 'https://images.shadcnspace.com/assets/brand-logo/logoipsum-3.svg',
+      lightimg:
+        'https://images.shadcnspace.com/assets/brand-logo/logoipsum-light-3.svg',
+      name: 'Brand 3',
+    },
+    {
+      image: 'https://images.shadcnspace.com/assets/brand-logo/logoipsum-4.svg',
+      lightimg:
+        'https://images.shadcnspace.com/assets/brand-logo/logoipsum-light-4.svg',
+      name: 'Brand 4',
+    },
+    {
+      image: 'https://images.shadcnspace.com/assets/brand-logo/logoipsum-5.svg',
+      lightimg:
+        'https://images.shadcnspace.com/assets/brand-logo/logoipsum-light-5.svg',
+      name: 'Brand 5',
+    },
+  ];
 
   return (
     <main className="mx-auto max-w-screen-2xl w-full h-full flex-1 flex flex-col relative">
@@ -19,9 +72,10 @@ export function LandingPage({ waitlistPeople }: { waitlistPeople: number }) {
         className="fixed inset-0 z-50 pointer-events-none"
         manualstart={true}
       />
-      <Hero waitlistPeople={waitlistPeople} />
-      {/* <Demo videoSrc="/demo.mp4" thumbnailSrc="/demo.png" /> */}
-      <Powered />
+
+      <HeroSection avatarList={avatarList} waitlistPeople={100} />
+      <BrandSlider brandList={brandList} />
+
       <Faq />
       <Footer />
     </main>

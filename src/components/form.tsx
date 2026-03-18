@@ -49,18 +49,28 @@ export default function WaitlistForm({ onSuccessChange }: FormProps) {
 
     if (step === 1) {
       if (!formData.email || !isValidEmail(formData.email)) {
-        logger.warn("form", "Invalid email submitted", { sessionId, email: formData.email });
+        logger.warn('form', 'Invalid email submitted', {
+          sessionId,
+          email: formData.email,
+        });
         toast.error('Please enter a valid email address');
         return;
       }
-      logger.debug("form", "Step 1 completed, moving to step 2", { sessionId, email: formData.email });
+      logger.debug('form', 'Step 1 completed, moving to step 2', {
+        sessionId,
+        email: formData.email,
+      });
       setStep(2);
       return;
     }
 
     try {
       setLoading(true);
-      logger.info("form", "Starting form submission", { sessionId, email: formData.email, hasReferralCode: !!refCode });
+      logger.info('form', 'Starting form submission', {
+        sessionId,
+        email: formData.email,
+        hasReferralCode: !!refCode,
+      });
 
       const payload = {
         firstname: formData.name || formData.email.split('@')[0],
@@ -68,7 +78,7 @@ export default function WaitlistForm({ onSuccessChange }: FormProps) {
         referredBy: refCode || undefined,
       };
 
-      logger.debug("form", "Calling mail API", { sessionId });
+      logger.debug('form', 'Calling mail API', { sessionId });
       const mailRes = await fetch('/api/mail', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -77,12 +87,19 @@ export default function WaitlistForm({ onSuccessChange }: FormProps) {
 
       if (!mailRes.ok) {
         const errorText = await mailRes.text();
-        logger.error("form", "Mail API request failed", new Error(`HTTP ${mailRes.status}: ${errorText}`), { sessionId, status: mailRes.status });
+        logger.error(
+          'form',
+          'Mail API request failed',
+          new Error(`HTTP ${mailRes.status}: ${errorText}`),
+          { sessionId, status: mailRes.status },
+        );
         const err = mailRes.status === 429 ? 'Rate limited' : 'Email failed';
         throw new Error(err);
       }
 
-      logger.debug("form", "Mail API succeeded, calling notion API", { sessionId });
+      logger.debug('form', 'Mail API succeeded, calling notion API', {
+        sessionId,
+      });
       const notionRes = await fetch('/api/notion', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -90,9 +107,16 @@ export default function WaitlistForm({ onSuccessChange }: FormProps) {
       });
 
       if (!notionRes.ok) {
-        const errData = await notionRes.json().catch(() => ({ error: 'Unknown error' }));
-        logger.error("form", "Notion API request failed", new Error(`HTTP ${notionRes.status}: ${errData.error}`), { sessionId, status: notionRes.status });
-        
+        const errData = await notionRes
+          .json()
+          .catch(() => ({ error: 'Unknown error' }));
+        logger.error(
+          'form',
+          'Notion API request failed',
+          new Error(`HTTP ${notionRes.status}: ${errData.error}`),
+          { sessionId, status: notionRes.status },
+        );
+
         if (notionRes.status === 409) {
           toast.error(errData.error || "You're already on the waitlist!");
           return;
@@ -105,7 +129,10 @@ export default function WaitlistForm({ onSuccessChange }: FormProps) {
       const link = `${window.location.origin}/?ref=${code}`;
       setShareLink(link);
 
-      logger.info("form", "Form submission completed successfully", { sessionId, referralCode: code });
+      logger.info('form', 'Form submission completed successfully', {
+        sessionId,
+        referralCode: code,
+      });
       toast.success("You're on the waitlist!");
       setSuccess(true);
       onSuccessChange?.(true);
@@ -129,8 +156,13 @@ export default function WaitlistForm({ onSuccessChange }: FormProps) {
       setFormData({ email: '', name: '' });
     } catch (error: unknown) {
       const errorMessage = getErrorMessage(error);
-      logger.error("form", "Form submission failed", error instanceof Error ? error : new Error(errorMessage), { sessionId });
-      
+      logger.error(
+        'form',
+        'Form submission failed',
+        error instanceof Error ? error : new Error(errorMessage),
+        { sessionId },
+      );
+
       if (error instanceof Error) {
         const msg =
           error.message === 'Rate limited'
@@ -152,13 +184,22 @@ export default function WaitlistForm({ onSuccessChange }: FormProps) {
   };
 
   const copyLink = () => {
-    navigator.clipboard.writeText(shareLink).then(() => {
-      logger.debug("form", "Referral link copied to clipboard", { shareLink });
-      toast.success('Link copied!');
-    }).catch((error: unknown) => {
-      logger.error("form", "Failed to copy link to clipboard", error instanceof Error ? error : new Error(String(error)));
-      toast.error('Failed to copy link');
-    });
+    navigator.clipboard
+      .writeText(shareLink)
+      .then(() => {
+        logger.debug('form', 'Referral link copied to clipboard', {
+          shareLink,
+        });
+        toast.success('Link copied!');
+      })
+      .catch((error: unknown) => {
+        logger.error(
+          'form',
+          'Failed to copy link to clipboard',
+          error instanceof Error ? error : new Error(String(error)),
+        );
+        toast.error('Failed to copy link');
+      });
   };
 
   return (
@@ -205,7 +246,7 @@ export default function WaitlistForm({ onSuccessChange }: FormProps) {
                 exit={{ opacity: 0, x: -20 }}
                 className="flex relative"
               >
-                <InputGroup className="h-auto min-h-[52px] rounded-[12px]">
+                <InputGroup className="h-auto min-h-[52px] rounded-[12px] pr-1">
                   <InputGroupInput
                     type="email"
                     name="email"

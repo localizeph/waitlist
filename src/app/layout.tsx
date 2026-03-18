@@ -1,44 +1,112 @@
-import type { Metadata } from "next";
-import { Geist_Mono, Inter_Tight } from "next/font/google";
-import { Toaster } from "sonner";
+import type { Metadata } from 'next';
+import { Geist_Mono, Inter_Tight } from 'next/font/google';
+import { Toaster } from 'sonner';
 
-import "./globals.css";
-import Header from "~/components/header";
-import { ThemeProvider } from "~/providers/theme-provider";
+import './globals.css';
+import Header, {
+  NavigationSection,
+} from '~/components/shadcn-space/blocks/hero-01/header';
+import { ThemeProvider } from '~/providers/theme-provider';
 
 const geistMono = Geist_Mono({
-	variable: "--font-geist-mono",
-	subsets: ["latin"],
+  variable: '--font-geist-mono',
+  subsets: ['latin'],
 });
 
 const interTight = Inter_Tight({
-	variable: "--font-inter-tight",
-	subsets: ["latin"],
-	weight: ["400", "500", "600", "700"],
+  variable: '--font-inter-tight',
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
 });
 
 export const metadata: Metadata = {
-	title: "Revoks — Next.js + Notion Waitlist Template",
-	description:
-		"A simple Next.js waitlist template with Notion as CMS and Resend to send emails created with React Email and Upstash Redis for rate limiting. Deployed on Vercel.",
+  title: 'Localize — The transit ad platform for brands that move.',
+  description:
+    'Purpose-built for managing ad campaigns that go beyond the feed. Designed for agile marketers.',
+  keywords: [
+    'transit media advertising',
+    'digital out-of-home advertising',
+    'DOOH platform',
+    'public transport advertising',
+    'remote ad management',
+    'cloud-based advertising platform',
+    'transit screen advertising',
+    'agile marketing platform',
+  ],
+  metadataBase: new URL('https://localizeph.com'),
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: 'Localize — The transit ad platform for brands that move.',
+    description:
+      'Purpose-built for managing ad campaigns that go beyond the feed. Designed for agile marketers.',
+    url: 'https://localizeph.com',
+    siteName: 'Localize',
+    locale: 'en_US',
+    type: 'website',
+    images: [
+      {
+        url: '/opengraph-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Localize — The transit ad platform for brands that move.',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Localize — The transit ad platform for brands that move.',
+    description:
+      'Purpose-built for managing ad campaigns that go beyond the feed. Designed for agile marketers.',
+    images: ['/twitter-image.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 export default function RootLayout({
-	children,
+  children,
 }: Readonly<{
-	children: React.ReactNode;
+  children: React.ReactNode;
 }>) {
-	return (
-		<html lang="en" className="h-full" suppressHydrationWarning>
-			<body
-				className={`${interTight.variable} ${geistMono.variable} antialiased flex flex-col h-full`}
-			>
-				<ThemeProvider>
-					<Header />
-					<Toaster />
-					{children}
-				</ThemeProvider>
-			</body>
-		</html>
-	);
+  const navigationData: NavigationSection[] = [
+    {
+      title: 'Product',
+      href: '#',
+    },
+    {
+      title: 'About',
+      href: '#',
+    },
+    {
+      title: 'Release notes',
+      href: '#',
+    },
+  ];
+
+  return (
+    <html lang="en" className="h-full" suppressHydrationWarning>
+      <body
+        className={`${interTight.variable} ${geistMono.variable} antialiased flex flex-col h-full`}
+      >
+        <ThemeProvider>
+          <div className="relative">
+            <Header navigationData={navigationData} />
+
+            <Toaster />
+            {children}
+          </div>
+        </ThemeProvider>
+      </body>
+    </html>
+  );
 }
