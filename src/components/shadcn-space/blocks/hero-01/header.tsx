@@ -75,7 +75,7 @@ const Header = ({ navigationData = [], className }: HeaderProps) => {
       >
         {/* Logo */}
         <div>
-          <a href="#">
+          <a href="/">
             <Logo />
           </a>
         </div>
