@@ -1,0 +1,11 @@
+{
+  "version": "0.1.0-alpha.1",
+  "date": "15 November 2024",
+  "title": "Initial Alpha Release",
+  "description": "First internal release. Core features are functional but expect rough edges and breaking changes.",
+  "items": [
+    "Basic waitlist signup flow",
+    "Changelog page",
+    "Admin CMS via TinaCMS"
+  ]
+}
