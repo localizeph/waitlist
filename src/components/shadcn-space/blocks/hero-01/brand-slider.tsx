@@ -24,7 +24,7 @@ function BrandSlider({ brandList }: { brandList: BrandList[] }) {
               <div className="py-4 overflow-hidden mask-[linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
                 <Marquee pauseOnHover className="[--duration:20s] p-0">
                   {brandList.map((brand, index) => (
-                    <div key={index}>
+                    <div key={index} className="shrink-0">
                       <img
                         src={brand.image}
                         alt={brand.name}

@@ -81,15 +81,15 @@ export default function RootLayout({
   const navigationData: NavigationSection[] = [
     {
       title: 'Product',
-      href: '#',
+      href: '/',
     },
     {
       title: 'About',
-      href: '#',
+      href: '/about',
     },
     {
-      title: 'Now',
-      href: '#',
+      title: 'Changelog',
+      href: '/changelog',
     },
   ];
 
