@@ -5,10 +5,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { Icon } from '@iconify/react';
 import { Menu, X } from 'lucide-react';
 import { motion } from 'motion/react';
-import { ArrowUpRight } from 'lucide-react';
-import { Button } from '~/components/ui/button';
 import { cn } from '~/lib/utils';
-import Logo from '~/assets/logo/logo';
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -22,6 +19,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '~/components/ui/sheet';
+import Logo from '~/components/svgs/logo';
 
 export type NavigationSection = {
   title: string;
@@ -33,23 +31,6 @@ type HeaderProps = {
   navigationData: NavigationSection[];
   className?: string;
 };
-
-const CollaborateButton = ({ className }: { className?: string }) => (
-  <Button
-    className={cn(
-      'relative text-sm font-medium rounded-full h-10 p-1 ps-4 pe-12 group transition-all duration-500 hover:ps-12 hover:pe-4 w-fit overflow-hidden',
-      className,
-      'cursor-pointer',
-    )}
-  >
-    <span className="relative z-10 transition-all duration-500">
-      Get Started
-    </span>
-    <span className="absolute right-1 w-8 h-8 bg-background text-foreground rounded-full flex items-center justify-center transition-all duration-500 group-hover:right-[calc(100%-36px)] group-hover:rotate-45">
-      <ArrowUpRight size={16} />
-    </span>
-  </Button>
-);
 
 const Header = ({ navigationData = [], className }: HeaderProps) => {
   const [sticky, setSticky] = useState(false);
@@ -80,7 +61,7 @@ const Header = ({ navigationData = [], className }: HeaderProps) => {
       viewport={{ once: true }}
       transition={{ duration: 0.7, ease: 'easeInOut' }}
       className={cn(
-        'inset-x-0 z-50 px-4 flex items-center justify-center sticky top-0 h-20',
+        'inset-x-0 z-50 px-4 flex items-center justify-center sticky top-0 h-20 ',
         className,
       )}
     >
@@ -88,20 +69,20 @@ const Header = ({ navigationData = [], className }: HeaderProps) => {
         className={cn(
           'w-full max-w-6xl flex items-center h-fit justify-between gap-3.5 lg:gap-6 transition-all duration-500',
           sticky
-            ? 'p-2.5 bg-background/60 backdrop-blur-lg border border-border/40 shadow-2xl shadow-primary/5 rounded-full'
+            ? 'p-2.5 bg-background/60 backdrop-blur-lg border border-border/40 shadow-2xl shadow-primary/5 rounded-lg '
             : 'bg-transparent border-transparent',
         )}
       >
         {/* Logo */}
         <div>
           <a href="#">
-            <Logo className="gap-3" />
+            <Logo />
           </a>
         </div>
 
         {/* Desktop Navigation */}
         <div>
-          <NavigationMenu className="max-lg:hidden bg-muted p-0.5 rounded-full">
+          <NavigationMenu className="max-lg:hidden bg-transparent p-0.5 rounded-lg ">
             <NavigationMenuList className="flex gap-0">
               {navigationData.map((navItem) => (
                 <NavigationMenuItem key={navItem.title}>
@@ -121,99 +102,91 @@ const Header = ({ navigationData = [], className }: HeaderProps) => {
         </div>
 
         {/* Desktop CTA */}
-        <div className="flex gap-4">
-          <CollaborateButton className="hidden lg:flex" />
+        <div className="lg:hidden">
+          <Sheet open={isOpen} onOpenChange={setIsOpen}>
+            <SheetTrigger id="mobile-menu-trigger">
+              <span className="rounded-full border border-border p-2 block">
+                <Menu width={20} height={20} />
+                <span className="sr-only">Menu</span>
+              </span>
+            </SheetTrigger>
 
-          <div className="lg:hidden">
-            <Sheet open={isOpen} onOpenChange={setIsOpen}>
-              <SheetTrigger id="mobile-menu-trigger">
-                <span className="rounded-full border border-border p-2 block">
-                  <Menu width={20} height={20} />
-                  <span className="sr-only">Menu</span>
-                </span>
-              </SheetTrigger>
+            <SheetContent
+              showCloseButton={false}
+              side="right"
+              className="w-full sm:w-96 p-0 border-l-0"
+            >
+              <div className="flex items-center justify-between p-6">
+                <a href="#">
+                  <Logo />
+                </a>
+                <SheetClose id="mobile-menu-close">
+                  <span className="rounded-full border border-border p-2.5 block">
+                    <X width={16} height={16} />
+                  </span>
+                </SheetClose>
+              </div>
 
-              <SheetContent
-                showCloseButton={false}
-                side="right"
-                className="w-full sm:w-96 p-0 border-l-0"
-              >
-                <div className="flex items-center justify-between p-6">
-                  <a href="#">
-                    <Logo className="gap-2" />
-                  </a>
-                  <SheetClose id="mobile-menu-close">
-                    <span className="rounded-full border border-border p-2.5 block">
-                      <X width={16} height={16} />
-                    </span>
-                  </SheetClose>
-                </div>
-
-                <div className="flex flex-col gap-12 px-6 pb-6 overflow-y-auto">
-                  <div className="flex flex-col gap-8">
-                    <SheetTitle className="sr-only">Menu</SheetTitle>
-                    <NavigationMenu
-                      orientation="vertical"
-                      className="items-start flex-none"
-                    >
-                      <NavigationMenuList className="flex flex-col items-start gap-3">
-                        {navigationData.map((item) => (
-                          <NavigationMenuItem key={item.title}>
-                            <NavigationMenuLink
-                              href={item.href}
+              <div className="flex flex-col gap-12 px-6 pb-6 overflow-y-auto">
+                <div className="flex flex-col gap-8">
+                  <SheetTitle className="sr-only">Menu</SheetTitle>
+                  <NavigationMenu
+                    orientation="vertical"
+                    className="items-start flex-none"
+                  >
+                    <NavigationMenuList className="flex flex-col items-start gap-3">
+                      {navigationData.map((item) => (
+                        <NavigationMenuItem key={item.title}>
+                          <NavigationMenuLink
+                            href={item.href}
+                            className={cn(
+                              'group/nav flex items-center text-2xl font-semibold tracking-tight transition-all p-0 hover:bg-transparent focus:bg-transparent data-active:bg-transparent data-[state=open]:bg-transparent',
+                              item.isActive
+                                ? 'text-primary'
+                                : 'text-muted-foreground hover:text-foreground hover:translate-x-2',
+                            )}
+                          >
+                            <div
                               className={cn(
-                                'group/nav flex items-center text-2xl font-semibold tracking-tight transition-all p-0 hover:bg-transparent focus:bg-transparent data-active:bg-transparent data-[state=open]:bg-transparent',
+                                'h-0.5 bg-primary transition-all duration-300 overflow-hidden',
                                 item.isActive
-                                  ? 'text-primary'
-                                  : 'text-muted-foreground hover:text-foreground hover:translate-x-2',
+                                  ? 'w-4 mr-2 opacity-100'
+                                  : 'w-0 opacity-0 group-hover/nav:w-4 group-hover/nav:mr-2 group-hover/nav:opacity-100',
                               )}
-                            >
-                              <div
-                                className={cn(
-                                  'h-0.5 bg-primary transition-all duration-300 overflow-hidden',
-                                  item.isActive
-                                    ? 'w-4 mr-2 opacity-100'
-                                    : 'w-0 opacity-0 group-hover/nav:w-4 group-hover/nav:mr-2 group-hover/nav:opacity-100',
-                                )}
-                              />
-                              {item.title}
-                            </NavigationMenuLink>
-                          </NavigationMenuItem>
-                        ))}
-                      </NavigationMenuList>
-                    </NavigationMenu>
-
-                    <div className="w-fit">
-                      <CollaborateButton />
-                    </div>
-                  </div>
-
-                  <div className="mt-auto flex flex-col gap-4">
-                    <div className="flex gap-3">
-                      {[
-                        'lucide:dribbble',
-                        'lucide:instagram',
-                        'lucide:twitter',
-                        'lucide:linkedin',
-                      ].map((icon) => (
-                        <a
-                          key={icon}
-                          href="#"
-                          className="flex items-center justify-center rounded-full outline outline-border hover:bg-muted transition p-3 shadow-xs"
-                        >
-                          <Icon icon={icon} width={16} height={16} />
-                        </a>
+                            />
+                            {item.title}
+                          </NavigationMenuLink>
+                        </NavigationMenuItem>
                       ))}
-                    </div>
-
-                    <p className="text-sm text-muted-foreground">
-                      © 2026 Shadcn Space
-                    </p>
-                  </div>
+                    </NavigationMenuList>
+                  </NavigationMenu>
                 </div>
-              </SheetContent>
-            </Sheet>
-          </div>
+
+                <div className="mt-auto flex flex-col gap-4">
+                  <div className="flex gap-3">
+                    {[
+                      'lucide:facebook',
+                      'lucide:instagram',
+                      'lucide:twitter',
+                      'lucide:linkedin',
+                    ].map((icon) => (
+                      <a
+                        key={icon}
+                        href="#"
+                        className="flex items-center justify-center rounded-full outline outline-border hover:bg-muted transition p-3 shadow-xs"
+                      >
+                        <Icon icon={icon} width={16} height={16} />
+                      </a>
+                    ))}
+                  </div>
+
+                  <p className="text-sm text-muted-foreground">
+                    © {new Date().getFullYear()} Localize.
+                  </p>
+                </div>
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
     </motion.header>

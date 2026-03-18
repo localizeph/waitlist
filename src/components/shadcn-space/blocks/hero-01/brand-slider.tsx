@@ -20,17 +20,8 @@ function BrandSlider({ brandList }: { brandList: BrandList[] }) {
             transition={{ duration: 1, delay: 0.6, ease: 'easeInOut' }}
             className="flex flex-col gap-3"
           >
-            <div className="flex justify-center text-center py-3 md:py-4 relative">
-              <div className="flex items-center justify-center gap-4">
-                <div className="hidden md:block h-0.5 w-40 bg-linear-to-l from-muted-foreground to-white dark:from-muted-foreground dark:to-transparent opacity-20" />
-                <p className="text-sm font-normal sm:px-2 px-10 text-muted-foreground text-center">
-                  Loved by 1000+ big and small brands around the worlds
-                </p>
-                <div className="hidden md:block h-0.5 w-40 bg-linear-to-r from-muted-foreground to-white dark:from-muted-foreground dark:to-transparent opacity-20" />
-              </div>
-            </div>
             {brandList && brandList.length > 0 && (
-              <div className="py-4">
+              <div className="py-4 overflow-hidden mask-[linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
                 <Marquee pauseOnHover className="[--duration:20s] p-0">
                   {brandList.map((brand, index) => (
                     <div key={index}>

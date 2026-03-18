@@ -88,7 +88,7 @@ export default function RootLayout({
       href: '#',
     },
     {
-      title: 'Release notes',
+      title: 'Now',
       href: '#',
     },
   ];

@@ -9,9 +9,6 @@ import { Confetti, type ConfettiRef } from '~/components/magicui/confetti';
 import BrandSlider, {
   BrandList,
 } from '~/components/shadcn-space/blocks/hero-01/brand-slider';
-import Header, {
-  NavigationSection,
-} from '~/components/shadcn-space/blocks/hero-01/header';
 import HeroSection from '~/components/shadcn-space/blocks/hero-01/hero';
 
 export function LandingPage({ waitlistPeople }: { waitlistPeople: number }) {
@@ -73,7 +70,7 @@ export function LandingPage({ waitlistPeople }: { waitlistPeople: number }) {
         manualstart={true}
       />
 
-      <HeroSection avatarList={avatarList} waitlistPeople={100} />
+      <HeroSection avatarList={avatarList} waitlistPeople={waitlistPeople} />
       <BrandSlider brandList={brandList} />
 
       <Faq />
