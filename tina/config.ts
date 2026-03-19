@@ -23,29 +23,6 @@ export default defineConfig({
   schema: {
     collections: [
       {
-        name: 'post',
-        label: 'Posts',
-        path: 'content/posts',
-        fields: [
-          {
-            type: 'string',
-            name: 'title',
-            label: 'Title',
-            isTitle: true,
-            required: true,
-          },
-          {
-            type: 'rich-text',
-            name: 'body',
-            label: 'Body',
-            isBody: true,
-          },
-        ],
-        ui: {
-          router: ({ document }) => `/demo/blog/${document._sys.filename}`,
-        },
-      },
-      {
         name: 'changelog',
         label: 'Changelog',
         path: 'content/changelog',
