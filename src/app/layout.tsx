@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Geist_Mono, Inter_Tight } from 'next/font/google';
+import { Inter, Inter_Tight } from 'next/font/google';
 import { Toaster } from 'sonner';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from "@vercel/speed-insights/next"
@@ -12,9 +12,10 @@ import { ThemeProvider } from '~/providers/theme-provider';
 import client from '~/__generated__/client';
 import { toNavItems } from '~/lib/nav';
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
+const inter = Inter({
+  variable: '--font-inter',
   subsets: ['latin'],
+  weight: ['500'],
 });
 
 const interTight = Inter_Tight({
@@ -88,7 +89,7 @@ export default async function RootLayout({
   return (
     <html lang="en" className="h-full" suppressHydrationWarning>
       <body
-        className={`${interTight.variable} ${geistMono.variable} antialiased flex flex-col h-full`}
+        className={`${interTight.variable} ${inter.variable} antialiased flex flex-col h-full`}
       >
         <ThemeProvider>
           <div className="relative">
