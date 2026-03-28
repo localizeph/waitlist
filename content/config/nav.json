@@ -1,0 +1,61 @@
+{
+  "header": [
+    {
+      "title": "Product",
+      "href": "/"
+    },
+    {
+      "title": "About",
+      "href": "/about"
+    },
+    {
+      "title": "Pricing",
+      "href": "/pricing"
+    },
+    {
+      "title": "Changelog",
+      "href": "/changelog"
+    }
+  ],
+  "footer": {
+    "menuItems": [
+      {
+        "title": "Product",
+        "links": [
+          {
+            "text": "Overview",
+            "url": "#"
+          },
+          {
+            "text": "Pricing",
+            "url": "#"
+          }
+        ]
+      },
+      {
+        "title": "Company",
+        "links": [
+          {
+            "text": "About",
+            "url": "/about"
+          },
+          {
+            "text": "Changelog",
+            "url": "/changelog"
+          }
+        ]
+      }
+    ],
+    "copyright": "© 2024 Localize. All rights reserved.",
+    "bottomLinks": [
+      {
+        "text": "Terms and Conditions",
+        "url": "#"
+      },
+      {
+        "text": "Privacy Policy",
+        "url": "#"
+      }
+    ]
+  }
+}

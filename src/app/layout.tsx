@@ -9,6 +9,8 @@ import Header, {
   NavigationSection,
 } from '~/components/shadcn-space/blocks/hero-01/header';
 import { ThemeProvider } from '~/providers/theme-provider';
+import client from '~/__generated__/client';
+import { toNavItems } from '~/lib/nav';
 
 const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
@@ -20,8 +22,6 @@ const interTight = Inter_Tight({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
 });
-
-
 
 export const metadata: Metadata = {
   title: 'Localize — The transit ad platform for brands that move.',
@@ -77,25 +77,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const navigationData: NavigationSection[] = [
-    {
-      title: 'Product',
-      href: '/',
-    },
-    {
-      title: 'About',
-      href: '/about',
-    },
-    {
-      title: 'Changelog',
-      href: '/changelog',
-    },
-  ];
+  const navRes = await client.queries.nav({ relativePath: "nav.json" });
+  const nav = navRes.data.nav;
 
   return (
     <html lang="en" className="h-full" suppressHydrationWarning>
@@ -104,7 +92,7 @@ export default function RootLayout({
       >
         <ThemeProvider>
           <div className="relative">
-            <Header navigationData={navigationData} />
+            <Header navigationData={toNavItems(nav.header)} />
 
             <Toaster />
             {children}

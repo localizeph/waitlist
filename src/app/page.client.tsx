@@ -3,16 +3,22 @@
 import { useRef } from 'react';
 
 import Faq from '~/components/faq';
-import Footer from '~/components/footer';
 import { AvatarList } from '~/components/shadcn-space/blocks/hero-01/hero';
 import { Confetti, type ConfettiRef } from '~/components/magicui/confetti';
 import BrandSlider, {
   BrandList,
 } from '~/components/shadcn-space/blocks/hero-01/brand-slider';
 import HeroSection from '~/components/shadcn-space/blocks/hero-01/hero';
-import { Footer2 } from '~/components/footer2';
+import { Footer } from '~/components/footer';
+import { FooterData, toFooterProps } from '~/lib/nav';
 
-export function LandingPage({ waitlistPeople }: { waitlistPeople: number }) {
+export function LandingPage({
+  waitlistPeople,
+  footerData,
+}: {
+  waitlistPeople: number;
+  footerData: FooterData | null | undefined;
+}) {
   const confettiRef = useRef<ConfettiRef>(null);
 
   const avatarList: AvatarList[] = [
@@ -75,7 +81,7 @@ export function LandingPage({ waitlistPeople }: { waitlistPeople: number }) {
       <BrandSlider brandList={brandList} />
 
       <Faq />
-      <Footer2 />
+      <Footer {...toFooterProps(footerData)} />
     </main>
   );
 }
