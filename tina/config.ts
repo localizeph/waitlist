@@ -23,6 +23,65 @@ export default defineConfig({
   schema: {
     collections: [
       {
+        name: "nav",
+        label: "Navigation",
+        path: "content/config",
+        format: "json",
+        ui: {
+          allowedActions: { create: false, delete: false },
+          global: true,
+        },
+        match: { include: "nav" },
+        fields: [
+          {
+            name: "header",
+            label: "Header Links",
+            type: "object",
+            list: true,
+            fields: [
+              { name: "title", type: "string", label: "Title" },
+              { name: "href", type: "string", label: "Href" },
+            ],
+          },
+          {
+            name: "footer",
+            label: "Footer",
+            type: "object",
+            fields: [
+              {
+                name: "menuItems",
+                label: "Menu Sections",
+                type: "object",
+                list: true,
+                fields: [
+                  { name: "title", type: "string" },
+                  {
+                    name: "links",
+                    type: "object",
+                    list: true,
+                    fields: [
+                      { name: "text", type: "string" },
+                      { name: "url", type: "string" },
+                    ],
+                  },
+                ],
+              },
+              { name: "copyright", type: "string", label: "Copyright Text" },
+              {
+                name: "bottomLinks",
+                label: "Bottom Links",
+                type: "object",
+                list: true,
+                fields: [
+                  { name: "text", type: "string" },
+                  { name: "url", type: "string" },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
         name: 'changelog',
         label: 'Changelog',
         path: 'content/changelog',
