@@ -24,7 +24,7 @@ const interTight = Inter_Tight({
 });
 
 export const metadata: Metadata = {
-  title: 'Localize — The transit ad platform for brands that move.',
+  title: 'Localize | The transit ad platform for brands that move.',
   description:
     'Purpose-built for managing ad campaigns that go beyond the feed. Designed for agile marketers.',
   keywords: [
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'Localize — The transit ad platform for brands that move.',
+    title: 'Localize | The transit ad platform for brands that move.',
     description:
       'Purpose-built for managing ad campaigns that go beyond the feed. Designed for agile marketers.',
     url: 'https://localizeph.com',
@@ -54,13 +54,13 @@ export const metadata: Metadata = {
         url: '/opengraph-image.png',
         width: 1200,
         height: 630,
-        alt: 'Localize — The transit ad platform for brands that move.',
+        alt: 'Localize | The transit ad platform for brands that move.',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Localize — The transit ad platform for brands that move.',
+    title: 'Localize | The transit ad platform for brands that move.',
     description:
       'Purpose-built for managing ad campaigns that go beyond the feed. Designed for agile marketers.',
     images: ['/twitter-image.png'],

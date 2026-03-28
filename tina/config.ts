@@ -23,58 +23,70 @@ export default defineConfig({
   schema: {
     collections: [
       {
-        name: "nav",
-        label: "Navigation",
-        path: "content/config",
-        format: "json",
+        name: 'nav',
+        label: 'Navigation',
+        path: 'content/config',
+        format: 'json',
         ui: {
           allowedActions: { create: false, delete: false },
           global: true,
         },
-        match: { include: "nav" },
+        match: { include: 'nav' },
         fields: [
           {
-            name: "header",
-            label: "Header Links",
-            type: "object",
+            name: 'header',
+            label: 'Header Links',
+            type: 'object',
             list: true,
+            ui: {
+              itemProps: (item) => ({ label: item?.title ?? 'Untitled' }),
+            },
             fields: [
-              { name: "title", type: "string", label: "Title" },
-              { name: "href", type: "string", label: "Href" },
+              { name: 'title', type: 'string', label: 'Title' },
+              { name: 'href', type: 'string', label: 'Href' },
             ],
           },
           {
-            name: "footer",
-            label: "Footer",
-            type: "object",
+            name: 'footer',
+            label: 'Footer',
+            type: 'object',
             fields: [
               {
-                name: "menuItems",
-                label: "Menu Sections",
-                type: "object",
+                name: 'menuItems',
+                label: 'Menu Sections',
+                type: 'object',
                 list: true,
+                ui: {
+                  itemProps: (item) => ({ label: item?.title ?? 'Untitled Section' }),
+                },
                 fields: [
-                  { name: "title", type: "string" },
+                  { name: 'title', type: 'string' },
                   {
-                    name: "links",
-                    type: "object",
+                    name: 'links',
+                    type: 'object',
                     list: true,
+                    ui: {
+                      itemProps: (item) => ({ label: item?.text ?? 'Untitled Link' }),
+                    },
                     fields: [
-                      { name: "text", type: "string" },
-                      { name: "url", type: "string" },
+                      { name: 'text', type: 'string' },
+                      { name: 'url', type: 'string' },
                     ],
                   },
                 ],
               },
-              { name: "copyright", type: "string", label: "Copyright Text" },
+              { name: 'copyright', type: 'string', label: 'Copyright Text' },
               {
-                name: "bottomLinks",
-                label: "Bottom Links",
-                type: "object",
+                name: 'bottomLinks',
+                label: 'Bottom Links',
+                type: 'object',
                 list: true,
+                ui: {
+                  itemProps: (item) => ({ label: item?.text ?? 'Untitled Link' }),
+                },
                 fields: [
-                  { name: "text", type: "string" },
-                  { name: "url", type: "string" },
+                  { name: 'text', type: 'string' },
+                  { name: 'url', type: 'string' },
                 ],
               },
             ],
