@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { Inter, Inter_Tight } from 'next/font/google';
 import { Toaster } from 'sonner';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from "@vercel/speed-insights/next"
@@ -11,18 +10,7 @@ import Header, {
 import { ThemeProvider } from '~/providers/theme-provider';
 import client from '~/__generated__/client';
 import { toNavItems } from '~/lib/nav';
-
-const inter = Inter({
-  variable: '--font-inter',
-  subsets: ['latin'],
-  weight: ['500'],
-});
-
-const interTight = Inter_Tight({
-  variable: '--font-inter-tight',
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-});
+import { instrumentSerif, inter, interTight, rethinkSans } from '~/lib/fonts';
 
 export const metadata: Metadata = {
   title: 'Localize | The transit ad platform for brands that move.',
@@ -87,9 +75,13 @@ export default async function RootLayout({
   const nav = navRes.data.nav;
 
   return (
-    <html lang="en" className="h-full" suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${inter.variable} ${interTight.variable} ${instrumentSerif.variable} ${rethinkSans.variable} h-full`}
+      suppressHydrationWarning
+    >
       <body
-        className={`${interTight.variable} ${inter.variable} antialiased flex flex-col h-full`}
+        className={`antialiased flex flex-col h-full`}
       >
         <ThemeProvider>
           <div className="relative">

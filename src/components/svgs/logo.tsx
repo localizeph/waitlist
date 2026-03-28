@@ -1,11 +1,3 @@
-import { Rethink_Sans } from "next/font/google";
-
-const rethinkSans = Rethink_Sans({
-  variable: '--font-rethink-sans',
-  subsets: ['latin'],
-  weight: ['600']
-});
-
 export default function Logo() {
   return (
     <div className="flex items-center gap-1.5 md:gap-2">
@@ -13,7 +5,7 @@ export default function Logo() {
       <div className="flex aspect-square size-7 md:size-8 items-center justify-center text-sidebar-primary-foreground rounded-md">
         <Localize className="h-4 w-4 md:h-5 md:w-5" />
       </div>
-      <span className={`font-semibold text-base md:text-lg leading-tight ${rethinkSans.variable}`}>
+      <span className={`font-semibold text-base md:text-lg leading-tight font-logotype`}>
         Localize
       </span>
     </div>

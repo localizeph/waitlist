@@ -3,11 +3,6 @@
 import { Instrument_Serif } from 'next/font/google';
 import { motion } from 'motion/react';
 
-const instrumentSerif = Instrument_Serif({
-  subsets: ['latin'],
-  weight: ['400'],
-  style: ['italic'],
-});
 
 function HeroSection() {
   return (
@@ -30,7 +25,7 @@ function HeroSection() {
                   className="lg:text-8xl md:text-7xl text-5xl font-medium leading-14 md:leading-20 lg:leading-24"
                 >
                   The transit ad platform for{' '}
-                  <span className={`${instrumentSerif.className} tracking-tight`}>
+                  <span className="font-serif tracking-tight">
                     brands that move.
                   </span>
                 </motion.h1>
@@ -39,7 +34,7 @@ function HeroSection() {
                   initial={{ opacity: 0, y: 32 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 1, delay: 0.1, ease: 'easeInOut' }}
-                  className="text-base font-normal max-w-2xl text-muted-foreground leading-relaxed px-4"
+                  className="text-base font-medium max-w-2xl text-muted-foreground leading-relaxed px-4"
                 >
                   Purpose-built for managing ad campaigns that go beyond the
                   feed. Designed for agile marketers.
