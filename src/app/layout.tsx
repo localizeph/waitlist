@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Geist_Mono, Inter_Tight, Rethink_Sans } from 'next/font/google';
+import { Geist_Mono, Inter_Tight } from 'next/font/google';
 import { Toaster } from 'sonner';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from "@vercel/speed-insights/next"
@@ -21,11 +21,7 @@ const interTight = Inter_Tight({
   weight: ['400', '500', '600', '700'],
 });
 
-const rethinkSans = Rethink_Sans({
-  variable: '--font-rethink-sans',
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-});
+
 
 export const metadata: Metadata = {
   title: 'Localize — The transit ad platform for brands that move.',
@@ -104,7 +100,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full" suppressHydrationWarning>
       <body
-        className={`${interTight.variable} ${geistMono.variable} ${rethinkSans.variable}  antialiased flex flex-col h-full`}
+        className={`${interTight.variable} ${geistMono.variable} antialiased flex flex-col h-full`}
       >
         <ThemeProvider>
           <div className="relative">

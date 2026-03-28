@@ -10,6 +10,7 @@ import BrandSlider, {
   BrandList,
 } from '~/components/shadcn-space/blocks/hero-01/brand-slider';
 import HeroSection from '~/components/shadcn-space/blocks/hero-01/hero';
+import { Footer2 } from '~/components/footer2';
 
 export function LandingPage({ waitlistPeople }: { waitlistPeople: number }) {
   const confettiRef = useRef<ConfettiRef>(null);
@@ -74,7 +75,7 @@ export function LandingPage({ waitlistPeople }: { waitlistPeople: number }) {
       <BrandSlider brandList={brandList} />
 
       <Faq />
-      <Footer />
+      <Footer2 />
     </main>
   );
 }

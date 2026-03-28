@@ -1,3 +1,4 @@
+import { Logo } from "~/components/svgs";
 import { cn } from "~/lib/utils";
 
 interface MenuItem {
@@ -87,7 +88,7 @@ const Footer2 = ({
           <div className="grid grid-cols-2 gap-8 lg:grid-cols-6">
             <div className="col-span-2 mb-8 lg:mb-0">
               <div className="flex items-center gap-2 lg:justify-start">
-                <span>logo here</span>
+                <Logo />
               </div>
               <p className="mt-4 font-bold">{tagline}</p>
             </div>
