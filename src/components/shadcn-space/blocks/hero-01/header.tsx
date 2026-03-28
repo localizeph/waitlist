@@ -6,12 +6,7 @@ import { Icon } from '@iconify/react';
 import { Menu, X } from 'lucide-react';
 import { motion } from 'motion/react';
 import { cn } from '~/lib/utils';
-import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-} from '~/components/ui/navigation-menu';
+
 import {
   Sheet,
   SheetClose,
@@ -20,6 +15,7 @@ import {
   SheetTrigger,
 } from '~/components/ui/sheet';
 import Logo from '~/components/svgs/logo';
+import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList } from '~/components/ui/navigation-menu';
 
 export type NavigationSection = {
   title: string;
