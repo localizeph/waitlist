@@ -1,7 +1,12 @@
 'use client';
 
-import { Instrument_Serif } from 'next/font/google';
 import { motion } from 'motion/react';
+import { Button } from '~/components/ui/button';
+import Link from 'next/link';
+import { ArrowRightIcon } from 'lucide-react';
+import AnimationContainer from '~/components/global/animation-container';
+import { BorderBeam } from '~/components/border-beam';
+import Image from 'next/image';
 
 
 function HeroSection() {
@@ -36,39 +41,41 @@ function HeroSection() {
                   transition={{ duration: 1, delay: 0.1, ease: 'easeInOut' }}
                   className="text-base font-medium max-w-2xl text-muted-foreground leading-relaxed px-4"
                 >
-                  Purpose-built for managing ad campaigns that go beyond the
+                  Purpose-built for launching advertisement campaigns that go beyond the
                   feed. Designed for agile marketers.
                 </motion.p>
+
+                <div className="flex items-center justify-center whitespace-nowrap gap-4 z-50">
+                  <Button asChild>
+                    <Link href={'#'} className="flex items-center">
+                      Get early access
+                      <ArrowRightIcon className="w-4 h-4 ml-2" />
+                    </Link>
+                  </Button>
+                </div>
               </div>
 
-              {/* Large Mockup Container with Glow Trail */}
-              <motion.div
-                initial={{ opacity: 0, y: 32 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 0.2, ease: 'easeInOut' }}
-                className="relative w-full"
-              >
-                {/* Shimmer border — background-position trick, no element translation */}
-                <div
-                  className="relative rounded-2xl p-[1px] overflow-hidden"
-                  style={{
-                    background: 'linear-gradient(90deg, transparent 0%, rgba(56,189,248,0.4) 25%, rgba(251,191,36,0.3) 50%, rgba(56,189,248,0.4) 75%, transparent 100%)',
-                    backgroundSize: '200% 100%',
-                    animation: 'shimmer 18s linear infinite',
-                  }}
-                >
-                  <div className="rounded-2xl overflow-hidden bg-background">
-                    <img
-                      src="/mockup.png"
-                      alt="App mockup"
-                      className="w-full h-auto rounded-2xl"
-                    />
-                  </div>
+              {/* Mockup Section */}
+              <AnimationContainer delay={0.2} className="relative py-12 px-2 bg-transparent w-full">
+                <div className="absolute md:top-[10%] left-1/2 w-3/4 -translate-x-1/2 h-1/4 md:h-1/3 inset-0 blur-[5rem] animate-image-glow bg-linear-to-r from-violet-500/50 via-blue-500/50 to-cyan-500/50" />
+                <div className="-m-2 rounded-xl p-2 ring-1 ring-inset ring-foreground/20 lg:-m-4 lg:rounded-2xl bg-opacity-50 backdrop-blur-3xl ">
+                  <BorderBeam
+                    size={250}
+                    duration={12}
+                    delay={9}
+                  />
+                  <Image
+                    src="/mockup.png"
+                    alt="Dashboard"
+                    width={1200}
+                    height={1200}
+                    quality={100}
+                    className="rounded-md lg:rounded-xl bg-foreground/10 ring-1 ring-border"
+                  />
+                  <div className="absolute -bottom-4 inset-x-0 w-full h-1/2 bg-linear-to-t from-background z-40"></div>
+                  <div className="absolute bottom-0 md:-bottom-8 inset-x-0 w-full h-1/4 bg-linear-to-t from-background z-50"></div>
                 </div>
-
-                {/* Bottom fade */}
-                <div className="absolute inset-0 pointer-events-none [background:linear-gradient(to_bottom,transparent_60%,white_100%)] dark:[background:linear-gradient(to_bottom,transparent_60%,black_100%)]" />
-              </motion.div>
+              </AnimationContainer>
             </div>
           </div>
         </div>

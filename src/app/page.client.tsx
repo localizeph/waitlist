@@ -8,6 +8,7 @@ import { Waitlist } from '~/components/waitlist';
 import Faq from '~/components/faq';
 import { Footer } from '~/components/footer';
 import { FooterData, toFooterProps } from '~/lib/nav';
+import ValuePropositions from '~/components/value-propositions';
 
 const brandList: BrandList[] = [
   { image: 'https://images.shadcnspace.com/assets/brand-logo/logoipsum-1.svg', lightimg: 'https://images.shadcnspace.com/assets/brand-logo/logoipsum-light-1.svg', name: 'Brand 1' },
@@ -36,6 +37,7 @@ export function LandingPage({
 
       <HeroSection />
       <BrandSlider brandList={brandList} />
+      <ValuePropositions />
       <Waitlist waitlistPeople={waitlistPeople} />
 
       <Faq />
