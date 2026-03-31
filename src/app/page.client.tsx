@@ -8,7 +8,7 @@ import { Waitlist } from '~/components/waitlist';
 import Faq from '~/components/faq';
 import { Footer } from '~/components/footer';
 import { FooterData, toFooterProps } from '~/lib/nav';
-import { ValuePropositions } from '~/components/value-propositions';
+import FeatureShowcase from '~/components/value-propositions';
 import { Pitch } from '~/components/pitch';
 
 export function LandingPage({
@@ -31,7 +31,7 @@ export function LandingPage({
       <HeroSection />
       <BrandSlider />
       <Pitch />
-      <ValuePropositions />
+      <FeatureShowcase />
       <Waitlist waitlistPeople={waitlistPeople} />
 
       <Faq />
