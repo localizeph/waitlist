@@ -35,7 +35,7 @@ export const BorderBeam = ({
         } as React.CSSProperties
       }
       className={cn(
-        "absolute inset-[0] rounded-[inherit] [border:calc(var(--border-width)*2px)_solid_transparent]",
+        "absolute inset-0 rounded-[inherit] [border:calc(var(--border-width)*2px)_solid_transparent]",
 
         // mask styles
         "[mask-clip:padding-box,border-box]! mask-intersect! [mask:linear-gradient(transparent,transparent),linear-gradient(white,white)]",

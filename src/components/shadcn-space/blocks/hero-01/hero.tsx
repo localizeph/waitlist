@@ -65,12 +65,12 @@ function HeroSection() {
                     delay={9}
                   />
                   <Image
-                    src="/mockup.png"
+                    src="/mockup.svg"
                     alt="Dashboard"
                     width={1200}
                     height={1200}
                     quality={100}
-                    className="rounded-md lg:rounded-xl bg-foreground/10 ring-1 ring-border"
+                    className="rounded-md lg:rounded-xl bg-foreground/10 ring-1 ring-border w-full object-cover object-left"
                   />
                   <div className="absolute -bottom-4 inset-x-0 w-full h-1/2 bg-linear-to-t from-background z-40"></div>
                   <div className="absolute bottom-0 md:-bottom-8 inset-x-0 w-full h-1/4 bg-linear-to-t from-background z-50"></div>
