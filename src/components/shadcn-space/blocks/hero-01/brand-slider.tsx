@@ -1,46 +1,43 @@
 'use client';
-import { Marquee } from '~/components/animations/marquee';
+
 import { motion } from 'motion/react';
+import Image from 'next/image';
+import { COMPANIES } from '~/lib/constants/misc';
 
-export interface BrandList {
-  image: string;
-  name: string;
-  lightimg: string;
-}
-
-function BrandSlider({ brandList }: { brandList: BrandList[] }) {
+function BrandSlider() {
   return (
     <section>
-      <div className="py-6 md:py-10">
-        <div className="mx-auto max-w-6xl">
-          <motion.div
+      <div className="py-14">
+        <div className="mx-auto px-4 md:px-8">
+          <motion.h2
             initial={{ opacity: 0, y: 32 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.6, ease: 'easeInOut' }}
-            className="flex flex-col gap-3"
+            className="text-center text-sm font-medium font-heading text-neutral-400"
           >
-            {brandList && brandList.length > 0 && (
-              <div className="py-4 overflow-hidden mask-[linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
-                <Marquee pauseOnHover className="[--duration:20s] p-0">
-                  {brandList.map((brand, index) => (
-                    <div key={index} className="shrink-0">
-                      <img
-                        src={brand.image}
-                        alt={brand.name}
-                        className="w-36 h-8 mr-6 lg:mr-20 dark:hidden"
-                      />
-                      <img
-                        src={brand.lightimg}
-                        alt={brand.name}
-                        className="hidden dark:block w-36 h-8 mr-12 lg:mr-20"
-                      />
-                    </div>
-                  ))}
-                </Marquee>
-              </div>
-            )}
-          </motion.div>
+            Trusted by top brands and agencies
+          </motion.h2>
+          <motion.ul
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.7, ease: 'easeInOut' }}
+            className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-6 md:gap-x-16 justify-center"
+          >
+            {COMPANIES.map((company) => (
+              <li key={company.name}>
+                <Image
+                  src={company.logo}
+                  alt={company.name}
+                  width={80}
+                  height={80}
+                  quality={100}
+                  className="w-28 h-auto"
+                />
+              </li>
+            ))}
+          </motion.ul>
         </div>
       </div>
     </section>

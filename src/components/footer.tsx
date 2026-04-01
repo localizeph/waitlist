@@ -27,7 +27,7 @@ const Footer = ({
         <footer>
           <div className="grid grid-cols-2 gap-8 lg:grid-cols-6">
             <div className="col-span-2 mb-8 lg:mb-0">
-              <Logo />
+              <Logo logoOnly />
               {tagline && <p className="mt-4 font-bold">{tagline}</p>}
             </div>
             {menuItems.map((section, i) => (
