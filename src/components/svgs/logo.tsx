@@ -1,13 +1,15 @@
-export default function Logo() {
+export default function Logo({ logoOnly }: { logoOnly?: boolean }) {
   return (
     <div className="flex items-center gap-1.5 md:gap-2">
       {/* Responsive gap */}
       <div className="flex aspect-square size-7 md:size-8 items-center justify-center text-sidebar-primary-foreground rounded-md">
         <Localize className="h-4 w-4 md:h-5 md:w-5" />
       </div>
-      <span className={`font-semibold text-base md:text-lg leading-tight font-logotype`}>
-        Localize
-      </span>
+      {!logoOnly && (
+        <span className={`font-semibold text-base md:text-lg leading-tight font-logotype`}>
+          Localize
+        </span>
+      )}
     </div>
   );
 }

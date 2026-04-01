@@ -23,7 +23,7 @@ export function Pitch() {
     <MaxWidthWrapper>
       <AnimationContainer delay={0.1}>
         <div className="flex flex-col w-full items-center justify-center py-8">
-          <h2 className="text-center text-2xl md:text-4xl lg:text-5xl leading-[1.15] font-medium font-heading text-muted-foreground mt-6">
+          <h2 className="text-center text-2xl md:text-3xl lg:text-4xl leading-[1.15] font-medium font-heading text-muted-foreground mt-6">
             <span className="text-foreground font-semibold">The foundation for transit media.</span>{' '}
             Purpose-built for digital advertisers with cloud orchestration at its core,
             Localize gives you one place to launch, track, and scale advertisements.

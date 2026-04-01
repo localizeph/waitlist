@@ -103,7 +103,7 @@ export function LandingPage({
           transition={{ duration: 1, ease: 'easeInOut' }}
           className="text-4xl md:text-5xl lg:text-6xl font-medium leading-tight max-w-lg text-balance"
         >
-          Built for scale.
+          Built for scalability.
           Available soon.
         </motion.h1>
         <Waitlist waitlistPeople={waitlistPeople} />
